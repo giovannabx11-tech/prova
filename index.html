@@ -1,0 +1,1269 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VivaSaúde | Saúde Pública e Prevenção</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --bg: #f5f8fa;
+    --surface: #ffffff;
+    --surface2: #edf5f4;
+    --text: #203541;
+    --muted: #758691;
+    --primary: #168b76;
+    --primary2: #22b394;
+    --border: #e5ecee;
+    --shadow: 0 10px 35px rgba(27, 64, 75, .06);
+}
+
+body.dark {
+    --bg: #101a20;
+    --surface: #18262e;
+    --surface2: #22353c;
+    --text: #ecf4f5;
+    --muted: #a3b4bc;
+    --primary: #45c6a4;
+    --primary2: #65d9bb;
+    --border: #2b3d46;
+    --shadow: 0 10px 35px rgba(0,0,0,.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    transition: background .3s, color .3s;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font-family: inherit;
+}
+
+.container {
+    width: 88%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* NAVBAR */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    transition: .3s;
+}
+
+.navbar {
+    height: 78px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Manrope', sans-serif;
+    font-size: 23px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.logo span {
+    color: var(--primary);
+}
+
+.logo-icon {
+    display: inline-flex;
+    width: 34px;
+    height: 34px;
+    background: var(--primary);
+    color: white;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-right: 7px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--muted);
+    font-size: 14px;
+    font-weight: 600;
+    transition: .2s;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+.nav-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.theme-toggle {
+    border: 1px solid var(--border);
+    background: var(--surface2);
+    color: var(--text);
+    width: 42px;
+    height: 42px;
+    border-radius: 13px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: .3s;
+}
+
+.theme-toggle:hover {
+    transform: rotate(10deg);
+}
+
+.menu-btn {
+    display: none;
+    background: var(--surface2);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* HERO */
+
+.hero {
+    padding: 80px 0 65px;
+}
+
+.hero-box {
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    gap: 55px;
+    align-items: center;
+}
+
+.hero-text {
+    animation: slideUp .8s ease;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 15px;
+    border-radius: 50px;
+    background: var(--surface2);
+    color: var(--primary);
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 23px;
+}
+
+.badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--primary2);
+}
+
+.hero h1 {
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(40px, 5vw, 65px);
+    line-height: 1.12;
+    letter-spacing: -2.5px;
+    margin-bottom: 22px;
+}
+
+.hero h1 span {
+    color: var(--primary);
+}
+
+.hero-text > p {
+    font-size: 16px;
+    line-height: 1.9;
+    color: var(--muted);
+    max-width: 530px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 14px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 14px 22px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .25s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    border: none;
+    box-shadow: 0 7px 20px rgba(22, 139, 118, .2);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.08);
+}
+
+.btn-secondary {
+    border: 1px solid var(--border);
+    color: var(--text);
+    background: var(--surface);
+}
+
+.btn-secondary:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.hero-image {
+    position: relative;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 440px;
+    object-fit: cover;
+    border-radius: 28px;
+    display: block;
+}
+
+.floating-card {
+    position: absolute;
+    left: -25px;
+    bottom: 25px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    padding: 18px 22px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    animation: float 4s ease-in-out infinite;
+}
+
+.float-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 13px;
+    background: #e0f5ef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+}
+
+body.dark .float-icon {
+    background: #29493f;
+}
+
+.floating-card strong {
+    display: block;
+    font-size: 14px;
+}
+
+.floating-card small {
+    color: var(--muted);
+    display: block;
+    margin-top: 4px;
+}
+
+/* INDICADORES */
+
+.stats {
+    padding: 25px 0 55px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.stat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 28px;
+    border-radius: 18px;
+    text-align: center;
+    transition: .3s;
+}
+
+.stat:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+}
+
+.stat h3 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 29px;
+    color: var(--primary);
+    margin-bottom: 7px;
+}
+
+.stat p {
+    font-size: 13px;
+    color: var(--muted);
+}
+
+/* SEÇÕES */
+
+.section {
+    padding: 85px 0;
+}
+
+.section-alt {
+    background: var(--surface2);
+}
+
+.section-header {
+    margin-bottom: 45px;
+}
+
+.section-header.center {
+    text-align: center;
+}
+
+.section-label {
+    color: var(--primary);
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 14px;
+}
+
+.section-header h2 {
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(28px, 4vw, 42px);
+    letter-spacing: -1.5px;
+    margin-bottom: 14px;
+}
+
+.section-header p {
+    max-width: 650px;
+    color: var(--muted);
+    line-height: 1.8;
+    font-size: 15px;
+}
+
+.section-header.center p {
+    margin: auto;
+}
+
+/* SOBRE */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.about-img img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 24px;
+}
+
+.about-content h3 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 26px;
+    margin-bottom: 18px;
+}
+
+.about-content p {
+    color: var(--muted);
+    line-height: 1.9;
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+.about-points {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.point {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.check {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: var(--surface2);
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* CARDS */
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.health-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 28px;
+    transition: .3s;
+}
+
+.health-card:hover {
+    transform: translateY(-7px);
+    box-shadow: var(--shadow);
+    border-color: transparent;
+}
+
+.card-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    background: var(--surface2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    margin-bottom: 22px;
+}
+
+.health-card h3 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+.health-card p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.card-number {
+    font-size: 12px;
+    color: var(--primary);
+    font-weight: 800;
+    margin-top: 20px;
+    letter-spacing: 1px;
+}
+
+/* PREVENÇÃO */
+
+.prevent-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.prevent-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 30px;
+    border-radius: 20px;
+    display: flex;
+    gap: 20px;
+    transition: .3s;
+}
+
+.prevent-card:hover {
+    box-shadow: var(--shadow);
+}
+
+.prevent-icon {
+    flex-shrink: 0;
+    width: 55px;
+    height: 55px;
+    border-radius: 16px;
+    background: var(--surface2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+}
+
+.prevent-card h3 {
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+
+.prevent-card p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* SUS */
+
+.sus-section {
+    padding: 85px 0;
+}
+
+.sus-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+    border-radius: 28px;
+    background: linear-gradient(135deg, #126f62, #159b80);
+    color: white;
+}
+
+.sus-text {
+    padding: 55px;
+}
+
+.sus-label {
+    display: inline-block;
+    padding: 8px 13px;
+    border-radius: 30px;
+    background: rgba(255,255,255,.14);
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+
+.sus-text h2 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 38px;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+
+.sus-text p {
+    font-size: 15px;
+    line-height: 1.9;
+    opacity: .9;
+    margin-bottom: 17px;
+}
+
+.sus-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 13px;
+    margin-top: 25px;
+}
+
+.sus-feature {
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 12px;
+    padding: 15px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.sus-image {
+    min-height: 450px;
+}
+
+.sus-image img {
+    width: 100%;
+    height: 100%;
+    min-height: 450px;
+    object-fit: cover;
+}
+
+/* CONSCIENTIZAÇÃO */
+
+.message {
+    text-align: center;
+    padding: 80px 20px;
+    max-width: 850px;
+    margin: auto;
+}
+
+.message-symbol {
+    font-size: 45px;
+    margin-bottom: 22px;
+}
+
+.message h2 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 34px;
+    margin-bottom: 20px;
+}
+
+.message p {
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.9;
+}
+
+.message-highlight {
+    margin-top: 30px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 5px solid var(--primary);
+    padding: 25px;
+    border-radius: 15px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* FOOTER */
+
+footer {
+    background: #142d38;
+    color: #fff;
+    padding: 50px 0 25px;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+    padding-bottom: 35px;
+}
+
+.footer-logo {
+    font-family: 'Manrope', sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.footer-logo span {
+    color: #53d0ad;
+}
+
+.footer-about {
+    max-width: 380px;
+    color: #a9bdc7;
+    font-size: 14px;
+    line-height: 1.8;
+    margin-top: 15px;
+}
+
+.footer-links h4 {
+    margin-bottom: 15px;
+}
+
+.footer-links a {
+    display: block;
+    color: #b7c7ce;
+    margin: 10px 0;
+    font-size: 14px;
+    transition: .2s;
+}
+
+.footer-links a:hover {
+    color: #58d2b0;
+}
+
+.footer-bottom {
+    border-top: 1px solid #2b424d;
+    padding-top: 23px;
+    text-align: center;
+    color: #9aafb9;
+    font-size: 12px;
+}
+
+/* ANIMAÇÕES */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity .7s ease, transform .7s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 950px) {
+    .hero-box {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-image img {
+        height: 380px;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .sus-box {
+        grid-template-columns: 1fr;
+    }
+
+    .sus-image img {
+        min-height: 300px;
+        height: 300px;
+    }
+}
+
+@media (max-width: 700px) {
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 78px;
+        left: 0;
+        width: 100%;
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        padding: 25px;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .hero {
+        padding-top: 50px;
+    }
+
+    .hero h1 {
+        font-size: 43px;
+    }
+
+    .hero-image img {
+        height: 300px;
+    }
+
+    .floating-card {
+        left: 10px;
+        bottom: 12px;
+        padding: 12px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .prevent-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sus-text {
+        padding: 30px;
+    }
+
+    .sus-text h2 {
+        font-size: 30px;
+    }
+
+    .sus-features {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-top {
+        flex-direction: column;
+    }
+
+    .message h2 {
+        font-size: 28px;
+    }
+
+    .section {
+        padding: 60px 0;
+    }
+
+    .about-img img {
+        height: 300px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="container navbar">
+        <a href="#inicio" class="logo">
+            <span class="logo-icon">✚</span>Viva<span>Saúde</span>
+        </a>
+
+        <nav class="nav-links" id="navLinks">
+            <a href="#inicio">Início</a>
+            <a href="#sobre">Saúde Pública</a>
+            <a href="#prevencao">Prevenção</a>
+            <a href="#sus">SUS</a>
+        </nav>
+
+        <div class="nav-actions">
+            <button class="theme-toggle" id="themeToggle" title="Alternar tema">🌙</button>
+            <button class="menu-btn" id="menuBtn">☰</button>
+        </div>
+    </div>
+</header>
+
+<!-- INÍCIO -->
+
+<section class="hero" id="inicio">
+    <div class="container hero-box">
+
+        <div class="hero-text">
+            <div class="badge">
+                <span class="badge-dot"></span>
+                Informação que transforma vidas
+            </div>
+
+            <h1>Uma população saudável começa com a <span>prevenção.</span></h1>
+
+            <p>
+                A saúde pública vai muito além de tratar doenças.
+                Ela promove qualidade de vida, conscientização e acesso
+                aos cuidados necessários para toda a sociedade.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#sobre" class="btn btn-primary">Conheça o tema ↗</a>
+                <a href="#prevencao" class="btn btn-secondary">Como se prevenir</a>
+            </div>
+        </div>
+
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=85" alt="Profissionais de saúde promovendo cuidados">
+
+            <div class="floating-card">
+                <div class="float-icon">💚</div>
+                <div>
+                    <strong>Prevenir é cuidar</strong>
+                    <small>Saúde, bem-estar e futuro</small>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- INDICADORES -->
+
+<div class="stats">
+    <div class="container stats-grid reveal">
+
+        <div class="stat">
+            <h3>Universal</h3>
+            <p>Saúde como direito de todos</p>
+        </div>
+
+        <div class="stat">
+            <h3>Prevenção</h3>
+            <p>Redução dos riscos de doenças</p>
+        </div>
+
+        <div class="stat">
+            <h3>Coletividade</h3>
+            <p>Cuidado com toda a população</p>
+        </div>
+
+    </div>
+</div>
+
+<!-- SOBRE -->
+
+<section class="section" id="sobre">
+    <div class="container">
+
+        <div class="about-grid reveal">
+
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=1000&q=85" alt="Atendimento e cuidado com a saúde">
+            </div>
+
+            <div class="about-content">
+                <div class="section-label">Saúde para todos</div>
+
+                <h3>O que é saúde pública e por que ela é importante?</h3>
+
+                <p>
+                    A saúde pública é uma área que busca proteger e melhorar
+                    a saúde da população por meio de ações coletivas,
+                    políticas públicas e estratégias de prevenção.
+                </p>
+
+                <p>
+                    Ela atua na identificação de riscos, no controle de doenças,
+                    na educação em saúde e na criação de condições para que
+                    todos tenham acesso a uma vida digna e saudável.
+                </p>
+
+                <div class="about-points">
+                    <div class="point">
+                        <span class="check">✓</span>
+                        Promoção da qualidade de vida
+                    </div>
+
+                    <div class="point">
+                        <span class="check">✓</span>
+                        Prevenção e controle de doenças
+                    </div>
+
+                    <div class="point">
+                        <span class="check">✓</span>
+                        Acesso aos serviços de saúde
+                    </div>
+
+                    <div class="point">
+                        <span class="check">✓</span>
+                        Redução das desigualdades sociais
+                    </div>
+                </div>
+
+            </div>
+            </div>
+    </div>
+</section>
+
+<!-- AÇÕES -->
+
+<section class="section section-alt" id="acoes">
+    <div class="container">
+
+        <div class="section-header center reveal">
+            <div class="section-label">Cuidado e conscientização</div>
+            <h2>O que promove uma vida saudável?</h2>
+            <p>
+                Diferentes iniciativas ajudam a proteger a população,
+                evitar doenças e incentivar escolhas mais saudáveis.
+            </p>
+        </div>
+
+        <div class="cards-grid">
+
+            <div class="health-card reveal">
+                <div class="card-icon">💉</div>
+                <h3>Vacinação</h3>
+                <p>As vacinas estimulam a proteção do organismo contra diversas doenças e ajudam a reduzir a circulação de agentes infecciosos.</p>
+                <div class="card-number">01 — PROTEÇÃO</div>
+            </div>
+
+            <div class="health-card reveal">
+                <div class="card-icon">📢</div>
+                <h3>Campanhas educativas</h3>
+                <p>Levam informações confiáveis à população, incentivam a prevenção e esclarecem dúvidas sobre saúde.</p>
+                <div class="card-number">02 — INFORMAÇÃO</div>
+            </div>
+
+            <div class="health-card reveal">
+                <div class="card-icon">🥦</div>
+                <h3>Alimentação saudável</h3>
+                <p>O consumo variado de alimentos nutritivos contribui para o bom funcionamento do corpo e para a saúde.</p>
+                <div class="card-number">03 — NUTRIÇÃO</div>
+            </div>
+
+            <div class="health-card reveal">
+                <div class="card-icon">🏃‍♀️</div>
+                <h3>Atividade física</h3>
+                <p>Movimentar o corpo regularmente melhora o bem-estar, fortalece o organismo e contribui para a saúde física.</p>
+                <div class="card-number">04 — MOVIMENTO</div>
+            </div>
+
+            <div class="health-card reveal">
+                <div class="card-icon">🧠</div>
+                <h3>Saúde mental</h3>
+                <p>O apoio emocional, o acolhimento e o acesso a profissionais são essenciais para cuidar da mente e das emoções.</p>
+                <div class="card-number">05 — EQUILÍBRIO</div>
+            </div>
+
+            <div class="health-card reveal">
+                <div class="card-icon">🚰</div>
+                <h3>Saneamento básico</h3>
+                <p>O acesso à água tratada, ao esgoto e à limpeza urbana é essencial para prevenir doenças e promover dignidade.</p>
+                <div class="card-number">06 — QUALIDADE DE VIDA</div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- PREVENÇÃO -->
+
+<section class="section" id="prevencao">
+    <div class="container">
+
+        <div class="section-header reveal">
+            <div class="section-label">Pequenas atitudes, grandes mudanças</div>
+            <h2>Prevenção começa no dia a dia</h2>
+            <p>
+                Hábitos simples, aliados a políticas públicas eficientes,
+                contribuem para uma comunidade mais saudável e protegida.
+            </p>
+        </div>
+
+        <div class="prevent-grid">
+
+            <div class="prevent-card reveal">
+                <div class="prevent-icon">🧼</div>
+                <div>
+                    <h3>Higienização das mãos</h3>
+                    <p>Lavar as mãos com água e sabão ajuda a reduzir a transmissão de microrganismos e prevenir infecções.</p>
+                </div>
+            </div>
+
+            <div class="prevent-card reveal">
+                <div class="prevent-icon">🩺</div>
+                <div>
+                    <h3>Acompanhamento médico</h3>
+                    <p>Consultas e exames preventivos ajudam a identificar alterações e permitem cuidados adequados.</p>
+                </div>
+            </div>
+
+            <div class="prevent-card reveal">
+                <div class="prevent-icon">🥤</div>
+                <div>
+                    <h3>Hidratação</h3>
+                    <p>Beber água ao longo do dia é importante para o funcionamento adequado do organismo.</p>
+                </div>
+            </div>
+
+            <div class="prevent-card reveal">
+                <div class="prevent-icon">🌿</div>
+                <div>
+                    <h3>Bem-estar</h3>
+                    <p>Ter momentos de descanso, lazer, sono adequado e contato social também faz parte do cuidado com a saúde.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- SUS -->
+
+<section class="sus-section section-alt" id="sus">
+    <div class="container">
+
+        <div class="sus-box reveal">
+
+            <div class="sus-text">
+                <div class="sus-label">Saúde pública brasileira</div>
+
+                <h2>O SUS: um direito de todos</h2>
+
+                <p>
+                    O Sistema Único de Saúde (SUS) é responsável por oferecer
+                    serviços públicos de saúde à população brasileira.
+                    Seu princípio é garantir acesso universal, integral e
+                    gratuito, respeitando as necessidades de cada cidadão.
+                </p>
+
+                <p>
+                    Além de consultas e tratamentos, o SUS atua na vacinação,
+                    prevenção, vigilância sanitária, distribuição de medicamentos,
+                    campanhas de saúde e atendimento de urgência.
+                </p>
+
+                <div class="sus-features">
+                    <div class="sus-feature">✓ Atendimento gratuito</div>
+                    <div class="sus-feature">✓ Acesso universal</div>
+                    <div class="sus-feature">✓ Vacinação</div>
+                    <div class="sus-feature">✓ Prevenção e tratamento</div>
+                </div>
+            </div>
+
+            <div class="sus-image">
+                <img src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=1000&q=85" alt="Profissional da saúde em atendimento">
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- FINAL -->
+
+<section class="section">
+    <div class="container message reveal">
+
+        <div class="message-symbol">🌱</div>
+
+        <div class="section-label">Uma responsabilidade coletiva</div>
+
+        <h2>Construir uma sociedade saudável é um trabalho de todos.</h2>
+
+        <p>
+            A saúde pública depende da união entre governo, profissionais
+            de saúde e população. Investir em prevenção, educação,
+            saneamento e acesso aos serviços é investir em vidas,
+            dignidade e em um futuro melhor.
+        </p>
+
+        <div class="message-highlight">
+            Prevenir doenças é um dos caminhos mais importantes para promover saúde e qualidade de vida.
+        </div>
+
+    </div>
+</section>
+
+<!-- RODAPÉ -->
+
+<footer>
+    <div class="container">
+
+        <div class="footer-top">
+
+            <div>
+                <div class="footer-logo">Viva<span>Saúde</span></div>
+                <p class="footer-about">
+                    Informação, prevenção e cuidado.
+                    Promovendo conhecimento para uma sociedade
+                    mais consciente, saudável e acolhedora.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <h4>Navegação</h4>
+                <a href="#inicio">Início</a>
+                <a href="#sobre">Saúde pública</a>
+                <a href="#acoes">Ações preventivas</a>
+                <a href="#sus">Sistema Único de Saúde</a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            Projeto educativo — Saúde Pública e Prevenção • 2026
+        </div>
+
+    </div>
+</footer>
+
+<script>
+
+// MODO ESCURO E CLARO
+
+const themeToggle = document.getElementById("themeToggle");
+
+themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+
+    if (document.body.classList.contains("dark")) {
+        themeToggle.innerHTML = "☀️";
+        themeToggle.title = "Ativar modo claro";
+    } else {
+        themeToggle.innerHTML = "🌙";
+        themeToggle.title = "Ativar modo escuro";
+    }
+});
+
+// MENU MOBILE
+
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+menuBtn.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+
+    menuBtn.innerHTML = navLinks.classList.contains("active") ? "✕" : "☰";
+});
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+        menuBtn.innerHTML = "☰";
+    });
+});
+
+// ANIMAÇÕES AO ROLAR A PÁGINA
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.12
+});
+
+document.querySelectorAll(".reveal").forEach(element => {
+    observer.observe(element);
+});
+
+</script>
+
+</body>
+</html>
